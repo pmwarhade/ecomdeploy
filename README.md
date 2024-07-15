@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy WAR app to Azure Web App - ecommapp
+name: Build and deploy JAR app to Azure Web App - backenddeploy1
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.war'
+          path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
     runs-on: windows-latest
@@ -47,7 +47,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'ecommapp'
+          app-name: 'backenddeploy1'
           slot-name: 'production'
-          package: '*.war'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_be7bf6649bfe469b86ed8086cc908e47 }}
+          package: '*.jar'
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_2059d220b98145e28b62a4925f51360c }}
